@@ -1,0 +1,18 @@
+### Iniciar y Conectar
+* `vagrant up --provider=qemu` → Inicia la máquina especificando QEMU como proveedor.
+* `vagrant ssh` → Entra al box mediante SSH.
+* `lsb_release -a` → *(Comando dentro de la máquina)* Verifica la versión del sistema operativo.
+
+### Pausar y Reanudar
+* `vagrant suspend` → Guarda el estado actual y suspende el box *(Nota: con QEMU puede no ser compatible)*.
+* `vagrant resume` → Reanuda la máquina después de ser suspendida.
+* `vagrant halt` → Detiene (apaga) la instancia de forma segura.
+
+### Destruir y Limpiar
+* `vagrant destroy` → Destruye la máquina virtual por completo, pero **no** elimina el archivo base (box) descargado.
+* `vagrant box remove perk/ubuntu-2204-arm64` → Elimina la imagen base (box) del almacenamiento de tu computadora.
+
+### Aprovisionamiento (Scripts)
+* `vagrant provision` → Si la máquina ya está en ejecución, fuerza la ejecución de los scripts de aprovisionamiento.
+* `vagrant up --provision` → Inicia la máquina y fuerza el aprovisionamiento al arrancar.
+* `vagrant reload --provision` -> El comando reinicia la máquina virtual y aplica la actualización del Vagrantfile
