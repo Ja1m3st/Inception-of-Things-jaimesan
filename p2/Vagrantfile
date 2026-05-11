@@ -1,0 +1,24 @@
+SERVICES = {
+	'jaimesanS' => {
+		ip: '192.168.56.110',
+		ports: {6443 => 6443}
+	}
+}
+
+
+Vagrant.configure("2") do |config|
+
+	config.vm.box = "gyptazy/ubuntu22.04-arm64"
+
+	config.vm.define "jaimesanS" do |server|
+		server.vm.hostname = "jaimesanS"
+		server.vm.network "private_network", ip: SERVICES['jaimesanS'][:ip]
+		server.vm.network "forwarded_port", guest: 6443, host: 6443
+		server.vm.provider "vmware" do |v|
+			v.memory = 1024
+			v.cpus = 1
+		end
+		server.vm.provision "shell", name: "common", path: "scripts/setup_server.sh"
+	end
+
+end

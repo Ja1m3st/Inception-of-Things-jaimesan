@@ -1,0 +1,38 @@
+SERVICES = {
+	'jaimesanS' => {
+		ip: '192.168.56.110',
+		ports: {6443 => 6443}
+	},
+	'jaimesanSW' =>	{
+		ip: '192.168.56.111',
+		ports: {8080 => 8080}
+	}
+}
+
+
+Vagrant.configure("2") do |config|
+
+	config.vm.box = "gyptazy/ubuntu22.04-arm64"
+
+	config.vm.define "jaimesanS" do |server|
+		server.vm.hostname = "jaimesanS"
+		server.vm.network "private_network", ip: SERVICES['jaimesanS'][:ip]
+		server.vm.network "forwarded_port", guest: 6443, host: 6443
+		server.vm.provider "vmware" do |v|
+			v.memory = 1024
+			v.cpus = 1
+		end
+		server.vm.provision "shell", name: "common", path: "scripts/jaimesanS-dependencies.sh"
+	end
+
+	config.vm.define "jaimesanSW" do |worker|
+		worker.vm.hostname = "jaimesanSW"
+		worker.vm.network "private_network", ip: SERVICES['jaimesanSW'][:ip]
+		worker.vm.network "forwarded_port", guest: 8080, host: 8080
+		worker.vm.provider "vmware" do |v|
+			v.memory = 1024
+			v.cpus = 1
+		end
+		worker.vm.provision "shell", name: "common", path: "scripts/jaimesanSW-dependencies.sh"
+	end
+end
