@@ -30,3 +30,9 @@ curl -H "Host: app2.com" http://192.168.56.110
 # App 3 (default backend, sin host específico)
 curl http://192.168.56.110
 curl -H "Host: app3.com" http://192.168.56.110
+
+
+# Entrar en http://gitlab.example.com:8080/users/sign_in
+# http://gitlab-webservice-default.gitlab.svc.cluster.local:8181/root/inception-of-things-jaimesan.git
+# git clone http://gitlab.example.com:8080/root/inception-of-things-jaimesan.git
+# k3d cluster delete mycluster 

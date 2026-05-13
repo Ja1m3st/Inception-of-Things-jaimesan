@@ -1,0 +1,26 @@
+global:
+  hosts:
+    domain: example.com
+    https: false
+  ingress:
+    configureCertmanager: false
+    class: traefik
+nginx-ingress:
+  enabled: false
+
+certmanager:
+  enabled: false
+prometheus:
+  enabled: false
+gitlab-runner:
+  enabled: false
+registry:
+  enabled: false
+
+gitlab:
+  webservice:
+    minReplicas: 1
+    maxReplicas: 1
+  sidekiq:
+    minReplicas: 1
+    maxReplicas: 1
