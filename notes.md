@@ -18,4 +18,15 @@
 * `vagrant reload --provision` -> El comando reinicia la máquina virtual y aplica la actualización del Vagrantfile
 * `vagrant provision --provision-with reload-terramino` -> Reconstruir el backend y reiniciar los servicios para aplicar el cambio
 
-gyptazy/ubuntu22.04-arm64
+# ALl info
+kubectl get all
+
+# App 1 (por host header)
+curl -H "Host: app1.com" http://192.168.56.110
+
+# App 2 (por host header)
+curl -H "Host: app2.com" http://192.168.56.110
+
+# App 3 (default backend, sin host específico)
+curl http://192.168.56.110
+curl -H "Host: app3.com" http://192.168.56.110

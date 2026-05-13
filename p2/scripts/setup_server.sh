@@ -1,12 +1,12 @@
 #!/bin/bash
 
-echo ">>> Instalar K3s en modo server"
+echo ">>> Install K3s in server mode"
 curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--write-kubeconfig-mode 644" sh -s -
 
-echo ">>> Esperar a que kubectl esté listo"
+echo ">>> Wait for kubectl to be ready"
 sleep 10
 
-echo ">>> Alias útil para la evaluación"
+echo ">>> Alias ​​useful for evaluation"
 echo "alias k='kubectl'" >> /home/vagrant/.bashrc
 
 
